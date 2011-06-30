@@ -3,10 +3,12 @@
 Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in DeviseMailer.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "rubymaster@univ-lille3.fr"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
+
+  config.cas_base_url = "https://cas.univ-lille3.fr"
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @qualification.name %>
+</p>
+
+<p>
+  <b>Refine text:</b>
+  <%= @qualification.refine_text %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%= @qualification.parent_id %>
+</p>
+
+<p>
+  <b>Lft:</b>
+  <%= @qualification.lft %>
+</p>
+
+<p>
+  <b>Rgt:</b>
+  <%= @qualification.rgt %>
+</p>
+
+
+<%= link_to 'Edit', edit_qualification_path(@qualification) %> |
+<%= link_to 'Back', qualifications_path %>
