@@ -1,12 +1,20 @@
 <h1>Listing qualifications</h1>
 
+<%= render_tree @arbo do |node, child| %>
+    <li><%= node.name %> -
+    <%= link_to 'Show', node %> -
+    <%= link_to 'Edit', edit_qualification_path(node) %> -
+    <%= link_to 'Destroy', node, :confirm => 'Are you sure?', :method => :delete %></li>
+    <%= child %>
+<% end %>
+
 <table>
   <tr>
     <th>Name</th>
     <th>Refine text</th>
     <th>Parent</th>
-    <th>Lft</th>
-    <th>Rgt</th>
+<!--     <th>Lft</th> -->
+<!--     <th>Rgt</th> -->
     <th></th>
     <th></th>
     <th></th>
@@ -17,8 +25,8 @@
     <td><%= qualification.name %></td>
     <td><%= qualification.refine_text %></td>
     <td><%= qualification.parent_id %></td>
-    <td><%= qualification.lft %></td>
-    <td><%= qualification.rgt %></td>
+<!--     <td><%= qualification.lft %></td> -->
+<!--     <td><%= qualification.rgt %></td> -->
     <td><%= link_to 'Show', qualification %></td>
     <td><%= link_to 'Edit', edit_qualification_path(qualification) %></td>
     <td><%= link_to 'Destroy', qualification, :confirm => 'Are you sure?', :method => :delete %></td>

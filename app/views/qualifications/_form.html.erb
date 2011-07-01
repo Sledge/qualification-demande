@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :parent_id %><br />
+    <%= f.select :parent_id, nested_set_options(Qualification, @qualification) {|i, level| "#{'-' * level} #{i.name}" } %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
@@ -19,18 +23,14 @@
     <%= f.label :refine_text %><br />
     <%= f.text_field :refine_text %>
   </div>
-  <div class="field">
-    <%= f.label :parent_id %><br />
-    <%= f.text_field :parent_id %>
-  </div>
-  <div class="field">
-    <%= f.label :lft %><br />
-    <%= f.text_field :lft %>
-  </div>
-  <div class="field">
-    <%= f.label :rgt %><br />
-    <%= f.text_field :rgt %>
-  </div>
+<!--   <div class="field"> -->
+<!--     <%= f.label :lft %><br /> -->
+<!--     <%= f.text_field :lft %> -->
+<!--   </div> -->
+<!--   <div class="field"> -->
+<!--     <%= f.label :rgt %><br /> -->
+<!--     <%= f.text_field :rgt %> -->
+<!--   </div> -->
   <div class="actions">
     <%= f.submit %>
   </div>

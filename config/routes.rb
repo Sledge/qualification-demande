@@ -1,5 +1,7 @@
 QualificationDemande::Application.routes.draw do
-  resources :qualifications
+  resources :qualifications do
+    get :select, :on => :collection
+  end
 
   devise_for :users
 

@@ -3,6 +3,7 @@ class QualificationsController < ApplicationController
   # GET /qualifications.xml
   def index
     @qualifications = Qualification.all
+    @arbo = Qualification.arrange
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,16 +16,23 @@ class QualificationsController < ApplicationController
   def show
     @qualification = Qualification.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @qualification }
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @qualification }
+      end
     end
+
+  # GET /select
+  def select
+    @qualifications = Qualification.all
+    @qn1 = Qualification.first.self_and_siblings.to_a
   end
 
   # GET /qualifications/new
   # GET /qualifications/new.xml
   def new
     @qualification = Qualification.new
+    @qlist = Qualification.first.self_and_descendants
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +49,9 @@ class QualificationsController < ApplicationController
   # POST /qualifications.xml
   def create
     @qualification = Qualification.new(params[:qualification])
+
+    #q.move_to_child_of(parent) if !parent.nil?
+
 
     respond_to do |format|
       if @qualification.save
