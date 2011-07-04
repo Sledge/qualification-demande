@@ -1,1 +1,8 @@
-Je souhaite <%= collection_select "qualification", "id", @qn1, :id, :name, :prompt => "" %>
+<script language="JavaScript">
+    var verbs_refine_text = <%= raw @texts.to_json %>
+</script>
+<div>
+<span id="verb">Je souhaite <%= collection_select "qualification", "verb_id", @verbs, :id, :name, :prompt => "" %> <span id="verb_refine_text"></span></span>
+<span id="subject"></span>
+<span id="cplmt"></span>
+</div>

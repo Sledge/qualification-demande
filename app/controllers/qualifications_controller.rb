@@ -22,10 +22,24 @@ class QualificationsController < ApplicationController
       end
     end
 
-  # GET /select
   def select
-    @qualifications = Qualification.all
-    @qn1 = Qualification.first.self_and_siblings.to_a
+    unless params[:id].present?
+      @verbs = Qualification.first.self_and_siblings
+
+      @texts = Hash.new
+      Qualification.all.each do |v|
+        @texts[v.id] = v.refine_text
+      end
+    else
+      q = Qualification.find(params[:id])
+      unless q.leaf?
+        @qualifications = q.descendants.first.self_and_siblings
+        @type = params[:format]
+        render "_select", :layout => false
+      else
+        render :nothing => true
+      end
+    end
   end
 
   # GET /qualifications/new

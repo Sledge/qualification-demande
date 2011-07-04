@@ -1,7 +1,9 @@
 QualificationDemande::Application.routes.draw do
   resources :qualifications do
     get :select, :on => :collection
+    get :select, :on => :member
   end
+  match 'qualifications/:id/select/:type' => 'qualifications#select', :as => :select_type_qualification
 
   devise_for :users
 
